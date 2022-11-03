@@ -5,6 +5,17 @@ body {
     line-height: 148%;
 }
 
+html {
+     ::-webkit-scrollbar {
+        width: 4px;
+        background-color: #696969;
+    }
+     ::-webkit-scrollbar-thumb {
+        background-color: #2f4f4f;
+        border-radius: 9em;
+    }
+}
+
 header,
 main,
 footer {
@@ -22,6 +33,7 @@ footer {
     max-width: 100vw;
     max-height: 100vh;
     overflow: hidden;
+    position: relative;
     &__quare-items {
         position: relative;
         width: 100%;
@@ -98,6 +110,7 @@ footer {
             justify-content: center;
             align-items: center;
             transform: rotate(180deg);
+            cursor: pointer;
             &.animate {
                 opacity: 1;
             }
@@ -107,9 +120,87 @@ footer {
             &__text {
                 font-size: 24px;
                 color: #fff;
-                cursor: pointer;
                 padding: 8px;
                 line-height: 120%;
+            }
+        }
+    }
+    &__form {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        &::after {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            content: '';
+            background-color: #696969;
+            opacity: 0.4;
+            z-index: 1;
+        }
+        &__wrap {
+            width: 300px;
+            height: 500px;
+            background-color: #fff;
+            max-height: 90%;
+            z-index: 2;
+            position: absolute;
+            border-radius: 8px;
+            padding: 12px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 100%);
+            transition: all 0.8s ease-in;
+            overflow-y: auto;
+            &.active {
+                transform: translate(-50%, -50%);
+            }
+            &__select {
+                margin-bottom: 16px;
+                cursor: pointer;
+                &.disabled {
+                    color: #A9A9A9;
+                    cursor: not-allowed;
+                    pointer-events: none;
+                }
+                &__btn {
+                    position: relative;
+                    padding: 8px 12px;
+                    padding-right: 36px;
+                    border-radius: 4px;
+                    width: 100%;
+                    background-color: #D3D3D3;
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        right: 12px;
+                        top: 12px;
+                        width: 0;
+                        height: 0;
+                        width: 0;
+                        height: 0;
+                        border-left: 8px solid transparent;
+                        border-right: 8px solid transparent;
+                        border-top: 12px solid #F0FFFF;
+                    }
+                }
+                &__wrap {
+                    border: 1px solid #696969;
+                    border-bottom-left-radius: 3px;
+                    border-top-left-radius: 3px;
+                    margin-top: 4px;
+                    &__item {
+                        cursor: pointer;
+                        padding: 6px 8px;
+                        border-bottom: 1px solid #696969;
+                        &:last-child {
+                            border-bottom: none;
+                        }
+                    }
+                }
             }
         }
     }
